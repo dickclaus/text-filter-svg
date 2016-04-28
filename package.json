@@ -1,0 +1,20 @@
+{
+  "name": "text-filter-svg",
+  "version": "0.0.1",
+  "description": "Text filter svg creator",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "webpack ./index.js bundle.js"
+  },
+  "author": "Dmitry Bezverkhiy",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

@@ -1,0 +1,14 @@
+<svg width="350" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 72px;
+	text-anchor: middle;
+        stroke: #be1e2d;
+        stroke-width: 2px;
+        font-family: PT Mono;
+      }
+    </style>
+  </defs>
+  <text x="175" y="50" class="cls-1">text</text>
+</svg>
