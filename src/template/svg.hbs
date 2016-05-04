@@ -1,0 +1,16 @@
+<svg width="{{{textWidth}}}" height="{{{textHeight}}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{{textWidth}}} {{{textHeight}}}">
+    <defs>
+        <style>
+{{#styles}}
+.{{{className}}} {
+{{{classStyles}}}
+}
+{{/styles}}
+        </style>
+        {{#filters}}
+        {{/filters}}
+    </defs>
+    {{#texts}}
+        <text x="{{{positionX}}}" y="{{{positionY}}}" class="{{{textClass}}}">{{{text}}}</text>
+    {{/texts}}
+</svg>

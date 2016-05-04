@@ -3,7 +3,7 @@
     <style>
       .cls-1 {
         font-size: 72px;
-	text-anchor: middle;
+	    text-anchor: middle;
         stroke: #be1e2d;
         stroke-width: 2px;
         font-family: PT Mono;

@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "mocha",
-    "build": "webpack ./index.js bundle.js"
+    "build": "webpack --config webpack.config.js",
+    "precompile": "handlebars ./src/template/svg.handlebars -f ./src/template/svg.js",
+    "start": "webpack-dev-server --watch --config webpack.config.js"
   },
   "author": "Dmitry Bezverkhiy",
   "license": "MIT",
@@ -16,5 +18,9 @@
     "mocha": "^2.4.5",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "handlebars-template-loader": "^0.6.0"
   }
 }
