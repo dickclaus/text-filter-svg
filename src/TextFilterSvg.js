@@ -1,9 +1,10 @@
-define("TextFilterSVG",["./svg/StyleGenerator", "./template/svg.hbs"], function(StyleGenerator, template) {
+define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./template/svg.hbs"], function(StyleGenerator, FilterGenerator, template) {
+	"use strict";
 
 	var TextFilterSVG = function() {
-		this.filters = {};
-		this.styleGenerator = new StyleGenerator();
-		// TODO: filter generator
+		// TODO: introduce layers
+		this.filterGenerator = new FilterGenerator();
+		this.styleGenerator = new StyleGenerator(this.filterGenerator);
 	};
 
 	TextFilterSVG.prototype.config = function(conf) {
@@ -31,15 +32,11 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./template/svg.hbs"], function(
 	};
 
 	TextFilterSVG.prototype.addFilter = function(filter) {
-		if (!filters[filter.getId()]) {
-			filters[filter.getId()] = filter;
-		}
+		this.filterGenerator.addFilter(filter);
 	};
 
 	TextFilterSVG.prototype.removeFilter = function(filter) {
-		if (filters[filter.getId()]) {
-			delete filters[filter.getId()];
-		}
+		this.filterGenerator.removeFilter(filter);
 	};
 
 	TextFilterSVG.prototype.renderToElement = function(element) {
@@ -47,26 +44,29 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./template/svg.hbs"], function(
 	};
 
 	TextFilterSVG.prototype._render = function() {
+		console.log(this.filterGenerator.generate());
 		var data = {
 			textWidth: this.width,
 			textHeight: this.height,
 			styles: this.styleGenerator.generate(),
-			filters: [],
+			filters: this.filterGenerator.generate(),
 			texts: this._getTexts()
 		};
 		return template(data);
 	};
 
 	TextFilterSVG.prototype._getTexts = function() {
-		var texts = [];
-		var baseText = {
-			positionX: Math.round(this.width/2),
-			positionY: Math.round(this.height/2),
-			textClass: this.styleGenerator.getBaseClass(),
-			text: this.text
-		};
-		texts.push(baseText);
+		// TODO: Generate text for layers
+		var texts = this.styleGenerator.getTexts(this.getPositionX(), this.getPositionY(), this.text);
 		return texts;
+	};
+
+	TextFilterSVG.prototype.getPositionX = function() {
+		return 	Math.round(this.width/2);
+	};
+
+	TextFilterSVG.prototype.getPositionY = function() {
+		return 	Math.round(this.height/2) + this.styleGenerator.fontSize/3;
 	};
 
 	TextFilterSVG.prototype.setSize = function(w, h) {

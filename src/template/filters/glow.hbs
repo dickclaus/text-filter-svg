@@ -1,0 +1,8 @@
+<filter id="{{{name}}}" x="{{{offsetX}}}" y="{{{offsetY}}}" width="{{{sizeX}}}" height="{{{sizeY}}}">
+    <feGaussianBlur stdDeviation="{{{blurX}}} {{{blurY}}}" result="{{{name}}}"/>
+    <feMerge>
+        <feMergeNode in="{{{name}}}"/>
+        <feMergeNode in="{{{name}}}"/>
+        <feMergeNode in="{{{name}}}"/>
+    </feMerge>
+</filter>

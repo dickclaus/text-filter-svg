@@ -1,5 +1,8 @@
 define("StyleGenerator", function() {
-	var StyleGenerator = function() {
+	"use strict";
+
+	var StyleGenerator = function(filterGenerator) {
+		this.filterGenerator = filterGenerator;
 		this.fontSize = 18;
 		this.fontFamily = "sans-serif";
 		this.textAnchor = "middle";
@@ -9,10 +12,18 @@ define("StyleGenerator", function() {
 	};
 
 	StyleGenerator.prototype.generate = function() {
-		// TODO: Add generating styles for different filters
+		// TODO: Add according to layers
+		for (var filterID in this.filterGenerator.filtersHash) {
+			var filter = this.filterGenerator.filtersHash[filterID];
+			var filterClass = this._createFilterClass(filter.name);
+			filterClass.classStyles = this._generateFilterStyles(filter);
+			this.styles.push(filterClass);
+		}
+
 		var baseClass = this._createClass();
 		baseClass.classStyles = this._generateBaseStyles();
 		this.styles.push(baseClass);
+
 		return this.styles;
 	};
 
@@ -32,6 +43,26 @@ define("StyleGenerator", function() {
 		this.fill = fillColor;
 	};
 
+	StyleGenerator.prototype.getTexts = function(positionX, positionY, text) {
+		var texts = [];
+		for (var filterID in this.filterGenerator.filtersHash) {
+			var filter = this.filterGenerator.filtersHash[filterID];
+			texts.push(this._createTextObject(positionX, positionY, text, filter.name + " " + this._getBaseClass()));
+		}
+		texts.push(this._createTextObject(positionX, positionY, text, this._getBaseClass()));
+		return texts;
+	};
+
+	StyleGenerator.prototype._createTextObject = function(positionX, positionY, text, textClass) {
+		var textObject = {
+			positionX: positionX,
+			positionY: positionY,
+			text: text,
+			textClass: textClass
+		};
+		return textObject;
+	};
+
 	StyleGenerator.prototype._createClass = function() {
 		this.currentIndex++;
 		return {
@@ -39,8 +70,14 @@ define("StyleGenerator", function() {
 		}
 	};
 
-	StyleGenerator.prototype.getBaseClass = function() {
-		return this.styles[0].className;
+	StyleGenerator.prototype._createFilterClass = function(name) {
+		return {
+			className: name
+		}
+	};
+
+	StyleGenerator.prototype._getBaseClass = function() {
+		return this.styles[this.styles.length-1].className;
 	};
 
 	StyleGenerator.prototype._generateBaseStyles = function() {
@@ -53,8 +90,20 @@ define("StyleGenerator", function() {
 		return styles;
 	};
 
+	StyleGenerator.prototype._generateFilterStyles = function(filter) {
+		var styles = "";
+
+		styles += this.createFilterRule("filter", filter.name);
+		styles += this.createStyleRule("fill", "#" + filter.color);
+		return styles;
+	};
+
 	StyleGenerator.prototype.createStyleRule = function(rule, value) {
 		return rule + ": " + value + ";\n";
+	};
+
+	StyleGenerator.prototype.createFilterRule = function(rule, value) {
+		return rule + ": url(#" + value + ");\n";
 	};
 
 	return StyleGenerator;

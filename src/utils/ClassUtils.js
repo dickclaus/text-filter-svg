@@ -1,4 +1,6 @@
 define("ClassUtils", function() {
+	"use strict";
+
 	var ClassUtils = {};
 
 	ClassUtils.inherit = function(child, parent) {
@@ -9,7 +11,7 @@ define("ClassUtils", function() {
 
 	ClassUtils.bindAll = function(context) {
 		if (context.__boundAll) {
-			throw new Error("Context is allready bound");
+			throw new Error("Context has been already bound");
 		}
 		context.__boundAll = true;
 		for (var i in context) {
