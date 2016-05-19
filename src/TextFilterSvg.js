@@ -44,7 +44,6 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./
 	};
 
 	TextFilterSVG.prototype._render = function() {
-		console.log(this.filterGenerator.generate());
 		var data = {
 			textWidth: this.width,
 			textHeight: this.height,

@@ -1,0 +1,17 @@
+<svg width="350" height="75" viewBox="0 0 350 75">
+    <rect x="0" y="0" width="350" height="75" style="fill: #000"/>
+    <g style="overflow:hidden; text-anchor: middle; font-size:50; font-family: Impact, sans-serif">
+        <defs>
+            <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="10 10" result="glow"/>
+                <feMerge>
+                    <feMergeNode in="glow"/>
+                    <feMergeNode in="glow"/>
+                    <feMergeNode in="glow"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <text style="filter: url(#glow); fill: #0c9" x="175" y="55">Simple Glow</text>
+        <text x="175" y="55" style="fill: white">Simple Glow</text>
+    </g>
+</svg>

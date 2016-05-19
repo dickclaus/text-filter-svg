@@ -6,13 +6,15 @@ define("FilterGenerator", function() {
 	};
 
 	FilterGenerator.prototype.generate = function() {
-		var result = {};
+		var filters = [];
 		for (var filterID in this.filtersHash) {
+			var result = {};
 			var filter = this.filtersHash[filterID];
 			result.filterName = filter.name;
 			result.filterString = filter.getFilterString();
+			filters.push(result);
 		}
-		return result;
+		return filters;
 	};
 
 	FilterGenerator.prototype.addFilter = function(filter) {

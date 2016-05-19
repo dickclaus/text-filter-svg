@@ -13,16 +13,16 @@ define("StyleGenerator", function() {
 
 	StyleGenerator.prototype.generate = function() {
 		// TODO: Add according to layers
+		var baseClass = this._createClass();
+		baseClass.classStyles = this._generateBaseStyles();
+		this.styles.push(baseClass);
+
 		for (var filterID in this.filterGenerator.filtersHash) {
 			var filter = this.filterGenerator.filtersHash[filterID];
 			var filterClass = this._createFilterClass(filter.name);
 			filterClass.classStyles = this._generateFilterStyles(filter);
 			this.styles.push(filterClass);
 		}
-
-		var baseClass = this._createClass();
-		baseClass.classStyles = this._generateBaseStyles();
-		this.styles.push(baseClass);
 
 		return this.styles;
 	};
@@ -77,7 +77,7 @@ define("StyleGenerator", function() {
 	};
 
 	StyleGenerator.prototype._getBaseClass = function() {
-		return this.styles[this.styles.length-1].className;
+		return this.styles[0].className;
 	};
 
 	StyleGenerator.prototype._generateBaseStyles = function() {

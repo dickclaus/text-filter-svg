@@ -15,6 +15,29 @@ define("GlowFilter", ["../utils/ClassUtils", "./FilterBase", "./Filters", "../te
 
 	ClassUtils.inherit(GlowFilter, FilterBase);
 
+	GlowFilter.prototype.setBlur = function(blurX, blurY) {
+		this.blurX = blurX || 0;
+		this.blurY = blurY || 0;
+	};
+
+	GlowFilter.prototype.setFilterSize = function(sizeX, sizeY) {
+		var sizeX = sizeX || 0;
+		var sizeY = sizeY || 0;
+		this.sizeX = sizeX + "%";
+		this.sizeY = sizeY + "%";
+	};
+
+	GlowFilter.prototype.setFilterOffset = function(offsetX, offsetY) {
+		var offsetX = offsetX || 0;
+		var offsetY = offsetY || 0;
+		this.offsetX = offsetX + "%";
+		this.offsetY = offsetY + "%";
+	};
+
+	GlowFilter.prototype.setColor = function(color) {
+		this.color = color.toString(16);
+	};
+
 	GlowFilter.prototype.getFilterString = function() {
 		var data = {
 			name: this.name,

@@ -4,7 +4,7 @@ define("Filters", function() {
 	var Filters = {};
 
 	Filters.GLOW_FILTER = 0;
-	Filters.DROP_SHADOW_FILTER = 1;
+	Filters.SHADOW_FILTER = 1;
 
 	Filters.names = [
 		"glow",

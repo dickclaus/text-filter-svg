@@ -3,7 +3,7 @@ Text filter svg
 
 Library to create photoshop like text effect in svg and embed them in HTML
 
-For now library supports only GlowFilter
+For now library supports only GlowFilter, ShadowFilter
 
 Usage:
 ```javascript
@@ -18,6 +18,16 @@ Usage:
     textFilterSVG.renderToElement(element);
 ```
 
-[link](https://www.w3.org/TR/SVG/filters.html "SVG W3C Specification")
+To start dev server:
+
+```
+npm start
+```
+
+Then goto [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+
+Library based on following documentation:
+
+[SVG W3C Specification](https://www.w3.org/TR/SVG/filters.html)
 
 
