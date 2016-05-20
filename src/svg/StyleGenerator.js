@@ -8,6 +8,9 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		this.textAnchor = "middle";
 		this.fill = "FFFFFF";
 		this.currentIndex = 0;
+		this.strokeColor = null;
+		this.strokeStyle = null;
+		this.strokeWidth = null;
 		this.styles = [];
 	};
 
@@ -16,6 +19,10 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		var baseClass = this._createClass();
 		baseClass.classStyles = this._generateBaseStyles();
 		this.styles.push(baseClass);
+
+		var strokeClass = this._createClass();
+		strokeClass.classStyles = this._generateStrokeStyles();
+		this.styles.push(strokeClass);
 
 		for (var filterID in this.filterGenerator.filtersHash) {
 			var filter = this.filterGenerator.filtersHash[filterID];
@@ -43,13 +50,21 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		this.fill = fillColor;
 	};
 
+	StyleGenerator.prototype.setStrokeColor = function(strokeColor) {
+		this.strokeColor = strokeColor;
+	};
+
+	StyleGenerator.prototype.setStrokeWidth = function(strokeWidth) {
+		this.strokeWidth = strokeWidth;
+	};
+
 	StyleGenerator.prototype.getTexts = function(positionX, positionY, text) {
 		var texts = [];
 		for (var filterID in this.filterGenerator.filtersHash) {
 			var filter = this.filterGenerator.filtersHash[filterID];
 			texts.push(this._createTextObject(positionX, positionY, text, filter.name + " " + this._getBaseClass()));
 		}
-		texts.push(this._createTextObject(positionX, positionY, text, this._getBaseClass()));
+		texts.push(this._createTextObject(positionX, positionY, text, this._getBaseTextClasses()));
 		return texts;
 	};
 
@@ -76,6 +91,11 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		}
 	};
 
+	StyleGenerator.prototype._getBaseTextClasses = function() {
+		var classes = this.styles[0].className + " " + this.styles[1].className;
+		return classes;
+	};
+
 	StyleGenerator.prototype._getBaseClass = function() {
 		return this.styles[0].className;
 	};
@@ -87,6 +107,18 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		styles += this.createStyleRule("font-size", this.fontSize + "px");
 		styles += this.createStyleRule("text-anchor", this.textAnchor);
 		styles += this.createStyleRule("fill", ColorUtils.styleColor(this.fill));
+		return styles;
+	};
+
+	StyleGenerator.prototype._generateStrokeStyles = function() {
+		var styles = "";
+		if (this.strokeColor) {
+			styles += this.createStyleRule("stroke", ColorUtils.styleColor(this.strokeColor));
+		}
+
+		if (this.strokeWidth) {
+			styles += this.createStyleRule("stroke-width", this.strokeWidth);
+		}
 		return styles;
 	};
 

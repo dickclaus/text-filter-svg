@@ -15,6 +15,8 @@ define(["./src/TextFilterSVG", "./src/filters/GlowFilter", "./src/filters/Shadow
 	textFilterSVG.setText("Text Filter SVG");
 	textFilterSVG.setFontFamily("PT Sans");
 	textFilterSVG.setFontSize(42);
+	textFilterSVG.setStrokeColor("blue");
+	textFilterSVG.setStrokeWidth(2.5);
 	textFilterSVG.addFilter(glowFilter);
 	textFilterSVG.addFilter(shadowFilter);
 	var element = document.getElementsByClassName("text-container")[0];

@@ -5,7 +5,8 @@ Text filter svg
 
 Library to create photoshop like text effect in svg and embed them in HTML
 
-For now library supports only GlowFilter, ShadowFilter
+For now library supports only GlowFilter, ShadowFilter, Stroke
+You can use hex colors or web name colors.
 
 Usage:
 ```javascript

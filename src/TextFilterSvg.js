@@ -31,6 +31,14 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./
 		this.styleGenerator.setTextAnchor(textAnchor);
 	};
 
+	TextFilterSVG.prototype.setStrokeColor = function(strokeColor) {
+		this.styleGenerator.setStrokeColor(strokeColor);
+	};
+
+	TextFilterSVG.prototype.setStrokeWidth = function(strokeWidth) {
+		this.styleGenerator.setStrokeWidth(strokeWidth);
+	};
+
 	TextFilterSVG.prototype.addFilter = function(filter) {
 		this.filterGenerator.addFilter(filter);
 	};
