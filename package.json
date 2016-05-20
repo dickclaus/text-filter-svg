@@ -7,7 +7,7 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha -u tdd test/**/*.js",
     "build": "webpack --config webpack.config.js",
     "precompile": "handlebars ./src/template/svg.handlebars -f ./src/template/svg.js",
     "start": "webpack-dev-server --watch --config webpack.config.js"
@@ -15,7 +15,9 @@
   "author": "Dmitry Bezverkhiy",
   "license": "MIT",
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^2.4.5",
+    "requirejs": "^2.2.0",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },

@@ -35,7 +35,7 @@ define("GlowFilter", ["../utils/ClassUtils", "./FilterBase", "./Filters", "../te
 	};
 
 	GlowFilter.prototype.setColor = function(color) {
-		this.color = color.toString(16);
+		this.color = color;
 	};
 
 	GlowFilter.prototype.getFilterString = function() {

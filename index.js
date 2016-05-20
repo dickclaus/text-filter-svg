@@ -7,7 +7,7 @@ define(["./src/TextFilterSVG", "./src/filters/GlowFilter", "./src/filters/Shadow
 	glowFilter.setBlur(12, 12);
 	glowFilter.setFilterSize(180, 180);
 	glowFilter.setFilterOffset(-30, -30);
-	glowFilter.setColor(0xFF0000);
+	glowFilter.setColor("red");
 
 	var shadowFilter = new ShadowFilter();
 	var textFilterSVG = new TextFilterSVG();

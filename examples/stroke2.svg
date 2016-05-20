@@ -1,0 +1,8 @@
+<svg width="350" height="75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 75">
+    <rect x="0" y="0" width="350" height="75" style="fill: #09f"/>
+    <g style="overflow:hidden; text-anchor: middle; font-size:45; font-weight: bold; font-family: Impact">
+        <text x="175" y="55" style="fill: white; stroke: #0f9; stroke-width: 14">Stroked Text</text>
+        <text x="175" y="55" style="fill: white; stroke: #99f; stroke-width: 8">Stroked Text</text>
+        <text x="175" y="55" style="fill: white; stroke: black; stroke-width: 2">Stroked Text</text>
+    </g>
+</svg>

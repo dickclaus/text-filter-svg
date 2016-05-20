@@ -1,4 +1,4 @@
-define("StyleGenerator", function() {
+define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 	"use strict";
 
 	var StyleGenerator = function(filterGenerator) {
@@ -86,7 +86,7 @@ define("StyleGenerator", function() {
 		styles += this.createStyleRule("font-family", this.fontFamily);
 		styles += this.createStyleRule("font-size", this.fontSize + "px");
 		styles += this.createStyleRule("text-anchor", this.textAnchor);
-		styles += this.createStyleRule("fill", "#" + this.fill);
+		styles += this.createStyleRule("fill", ColorUtils.styleColor(this.fill));
 		return styles;
 	};
 
@@ -94,7 +94,7 @@ define("StyleGenerator", function() {
 		var styles = "";
 
 		styles += this.createFilterRule("filter", filter.name);
-		styles += this.createStyleRule("fill", "#" + filter.color);
+		styles += this.createStyleRule("fill", ColorUtils.styleColor(filter.color));
 		return styles;
 	};
 

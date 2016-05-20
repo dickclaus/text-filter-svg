@@ -1,3 +1,5 @@
+[![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
+
 Text filter svg
 ===============
 
@@ -29,5 +31,11 @@ Then goto [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
 Library based on following documentation:
 
 [SVG W3C Specification](https://www.w3.org/TR/SVG/filters.html)
+
+
+[travis-image]: https://travis-ci.org/
+[travis-url]: https://travis-ci.org/
+[dependency-image]: https://david-dm.org/
+[dependency-url]: https://david-dm.org/
 
 
