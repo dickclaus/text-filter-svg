@@ -54,6 +54,10 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		this.strokeColor = strokeColor;
 	};
 
+	StyleGenerator.prototype.setStrokeStyle = function(strokeStyle) {
+		this.strokeStyle = strokeStyle;
+	};
+
 	StyleGenerator.prototype.setStrokeWidth = function(strokeWidth) {
 		this.strokeWidth = strokeWidth;
 	};
@@ -114,6 +118,8 @@ define("StyleGenerator", ["../utils/ColorUtils"], function(ColorUtils) {
 		var styles = "";
 		if (this.strokeColor) {
 			styles += this.createStyleRule("stroke", ColorUtils.styleColor(this.strokeColor));
+		} else if (this.strokeStyle) {
+			styles += this.createFilterRule("stroke", this.strokeStyle);
 		}
 
 		if (this.strokeWidth) {

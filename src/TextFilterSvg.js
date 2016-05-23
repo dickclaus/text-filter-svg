@@ -35,6 +35,10 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./
 		this.styleGenerator.setStrokeColor(strokeColor);
 	};
 
+	TextFilterSVG.prototype.setStrokeStyle = function(strokeStyle) {
+		this.styleGenerator.setStrokeStyle(strokeStyle);
+	};
+
 	TextFilterSVG.prototype.setStrokeWidth = function(strokeWidth) {
 		this.styleGenerator.setStrokeWidth(strokeWidth);
 	};
@@ -47,6 +51,11 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./
 		this.filterGenerator.removeFilter(filter);
 	};
 
+	TextFilterSVG.prototype.addGradient = function(gradient) {
+		// TODO: add container for gradients
+		this.gradient = gradient;
+	};
+
 	TextFilterSVG.prototype.renderToElement = function(element) {
 		element.innerHTML = this._render();
 	};
@@ -57,6 +66,7 @@ define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./
 			textHeight: this.height,
 			styles: this.styleGenerator.generate(),
 			filters: this.filterGenerator.generate(),
+			gradients: [{gradientString: this.gradient.getGradientString()}],
 			texts: this._getTexts()
 		};
 		return template(data);

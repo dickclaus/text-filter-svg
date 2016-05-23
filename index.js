@@ -2,12 +2,23 @@
 var HandleBars = require("handlebars/runtime");
 window.HandleBars = HandleBars;
 
-define(["./src/TextFilterSVG", "./src/filters/GlowFilter", "./src/filters/ShadowFilter"], function(TextFilterSVG, GlowFilter, ShadowFilter) {
+define(["./src/TextFilterSVG",
+	"./src/filters/GlowFilter",
+	"./src/filters/ShadowFilter",
+	"./src/svg/styles/LinearGradient",
+    "./src/math/SVGRectangle"],
+	function(TextFilterSVG, GlowFilter, ShadowFilter, LinearGradient, SVGRectangle) {
+
 	var glowFilter = new GlowFilter();
 	glowFilter.setBlur(12, 12);
 	glowFilter.setFilterSize(180, 180);
 	glowFilter.setFilterOffset(-30, -30);
 	glowFilter.setColor("red");
+
+	var svgRectangle = new SVGRectangle("0%", "0%", "100%", "0%");
+	var linearGradient = new LinearGradient("linear", svgRectangle);
+	linearGradient.addGradientStop(0, "#ff0000", 1);
+	linearGradient.addGradientStop(100, "#00ff00", 1);
 
 	var shadowFilter = new ShadowFilter();
 	var textFilterSVG = new TextFilterSVG();
@@ -15,8 +26,9 @@ define(["./src/TextFilterSVG", "./src/filters/GlowFilter", "./src/filters/Shadow
 	textFilterSVG.setText("Text Filter SVG");
 	textFilterSVG.setFontFamily("PT Sans");
 	textFilterSVG.setFontSize(42);
-	textFilterSVG.setStrokeColor("blue");
+	textFilterSVG.setStrokeStyle("linear");
 	textFilterSVG.setStrokeWidth(2.5);
+	textFilterSVG.addGradient(linearGradient);
 	textFilterSVG.addFilter(glowFilter);
 	textFilterSVG.addFilter(shadowFilter);
 	var element = document.getElementsByClassName("text-container")[0];
