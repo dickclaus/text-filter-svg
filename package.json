@@ -1,25 +1,29 @@
 {
   "name": "text-filter-svg",
   "version": "0.0.1",
-  "description": "Text filter svg creator",
+  "description": "Library to create svg text with filters and effects",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "test": "mocha -u tdd test/**/*.js",
-    "build": "webpack --config webpack.config.js",
-    "precompile": "handlebars ./src/template/svg.handlebars -f ./src/template/svg.js",
-    "start": "webpack-dev-server --watch --config webpack.config.js"
+    "start": "",
+    "test": "grunt test"
   },
   "author": "Dmitry Bezverkhiy",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "requirejs": "^2.2.0",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-lib-phantomjs": "^1.1.0",
+    "grunt-mocha": "^1.0.2",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "requirejs": "^2.2.0"
   },
   "dependencies": {
     "handlebars": "^4.0.5",

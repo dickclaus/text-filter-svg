@@ -1,14 +1,11 @@
-"use strict";
-var HandleBars = require("handlebars/runtime");
-window.HandleBars = HandleBars;
-
-define(["./src/TextFilterSVG",
-	"./src/filters/GlowFilter",
-	"./src/filters/ShadowFilter",
-	"./src/svg/styles/LinearGradient",
-    "./src/math/SVGRectangle"],
-	function(TextFilterSVG, GlowFilter, ShadowFilter, LinearGradient, SVGRectangle) {
-
+define([
+	"TextFilterSVG",
+	"filters/GlowFilter",
+	"filters/ShadowFilter",
+	"svg/styles/LinearGradient",
+    "math/SVGRectangle"],
+function(TextFilterSVG, GlowFilter, ShadowFilter, LinearGradient, SVGRectangle) {
+	"use strict";
 	var glowFilter = new GlowFilter();
 	glowFilter.setBlur(12, 12);
 	glowFilter.setFilterSize(180, 180);

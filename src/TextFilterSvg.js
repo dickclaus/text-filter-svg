@@ -1,4 +1,4 @@
-define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./template/svg.hbs"], function(StyleGenerator, FilterGenerator, template) {
+define("TextFilterSVG",["./svg/StyleGenerator", "./filters/FilterGenerator", "./template/svg.h"], function(StyleGenerator, FilterGenerator, template) {
 	"use strict";
 
 	var TextFilterSVG = function() {
