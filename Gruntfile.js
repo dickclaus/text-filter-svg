@@ -1,6 +1,14 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		connect: {
+			server: {
+				options: {
+					port: 3000,
+					keepalive: true
+				}
+			}
+		},
 		mocha: {
 			// Test all files ending in .html anywhere inside the test directory.
 			browser: ['test/**/*.html'],
@@ -20,8 +28,13 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-mocha');
+	grunt.loadNpmTasks("grunt-contrib-connect");
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-handlebars');
+
+	grunt.registerTask('start', 'Run local server', function() {
+		grunt.task.run('connect');
+	});
 
 	grunt.registerTask('test', 'Run Mocha tests.', function() {
 		// If not --test option is specified, run all tests.
@@ -30,7 +43,5 @@ module.exports = function(grunt) {
 		grunt.config.set('mocha.browser', ['test/' + test_case + '.html']);
 		grunt.task.run('mocha');
 	});
-
-	grunt.registerTask('dist', ['requirejs']);
 
 };

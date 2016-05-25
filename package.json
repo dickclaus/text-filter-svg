@@ -7,7 +7,7 @@
     "example": "examples"
   },
   "scripts": {
-    "start": "",
+    "start": "grunt start",
     "test": "grunt test"
   },
   "author": "Dmitry Bezverkhiy",
@@ -16,6 +16,7 @@
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-handlebars": "^1.0.0",
     "grunt-contrib-requirejs": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
